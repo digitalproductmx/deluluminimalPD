@@ -694,8 +694,8 @@
         <div
           class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6"
         >
-          <p class="font-typewriter text-sm">DELULU FUTURE DEV © 2025</p>
-          <p class="text-xs opacity-60">100% online • Citas por Zoom</p>
+          <p class="font-typewriter text-sm">ALEJANDRA BÁRCENA © 2025</p>
+          <p class="text-xs opacity-60">100% online • Appointments via Zoom</p>
         </div>
       </footer>
       <!-- Chat Bot Widget -->
@@ -716,9 +716,9 @@
           >
             <div>
               <h3 class="font-typewriter text-sm font-semibold">
-                Delulu Assistant
+                Alejandra Bárcena Assistant
               </h3>
-              <p class="text-xs opacity-70">Responde en tiempo real</p>
+              <p class="text-xs opacity-70">I answer your questions</p>
             </div>
             <button onclick="toggleChat()" class="hover:opacity-70 transition">
               <svg
@@ -752,10 +752,8 @@
                 D
               </div>
               <div class="flex-1 bg-gray-100 rounded-lg p-3 text-sm">
-                <p>¡Hola! 👋 Bienvenido a Delulu Minimal.</p>
-                <p class="text-xs opacity-60 mt-2">
-                  ¿En qué puedo ayudarte hoy?
-                </p>
+                <p>Hello! 👋 Welcome</p>
+                <p class="text-xs opacity-60 mt-2">How can I help you today?</p>
               </div>
             </div>
           </div>
@@ -765,7 +763,7 @@
               <input
                 id="chat-input"
                 type="text"
-                placeholder="Escribe tu pregunta..."
+                placeholder="Type your question..."
                 class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-current"
                 onkeypress="handleChatKeypress(event)"
               />
@@ -777,11 +775,12 @@
                   color: var(--bg-color);
                 "
               >
-                Enviar
+                Send
               </button>
             </div>
           </div>
         </div>
+
         <!-- Chat Toggle Button -->
         <button
           id="chat-toggle"
@@ -793,65 +792,51 @@
         </button>
       </div>
     </div>
+
     <script>
       const botResponses = {
-        horario: {
-          keywords: ["horario", "abierto", "atención", "disponible", "horas"],
+        schedule: {
+          keywords: ["schedule", "hours", "available", "availability", "open"],
           response:
-            "⏰ Estamos online 24/7 para consultas. Las citas se agendas por Zoom en horarios coordinados contigo. ¿Quieres agendar una?",
+            "⏰ I’m available online 24/7 for inquiries. Zoom sessions are scheduled based on availability. Would you like to book one?",
         },
-        contacto: {
-          keywords: ["email", "correo", "teléfono", "whatsapp", "contacto"],
+
+        contact: {
+          keywords: ["email", "phone", "whatsapp", "contact"],
           response:
-            "📧 Contactanos:\n📨 indigolilobarcena@delulufuture.dev\n💬 WhatsApp: +56 5 9998 7003\n\n¿Necesitas algo específico?",
+            "📧 Contact me:\n📨 indigolilobarcena@delulufuture.dev\n💬 WhatsApp: +56 5 9998 7003\n\nDo you need help with something specific?",
         },
-        servicios: {
-          keywords: [
-            "servicio",
-            "qué hacen",
-            "qué ofrece",
-            "diseño",
-            "producto",
-          ],
+
+        services: {
+          keywords: ["services", "what do you do", "design", "product", "ux"],
           response:
-            "🎨 Ofrecemos:\n• Diseño Web Estratégico\n• Producto Digital\n• Identidad Visual Minimalista\n• Auditoría UX & Accesibilidad\n\n¿Cuál te interesa?",
+            "🎨 I offer:\n• Strategic Web Design\n• Digital Product Design\n• Minimal Visual Identity\n• UX & Accessibility Audits\n\nWhich one are you interested in?",
         },
-        redes: {
-          keywords: [
-            "instagram",
-            "tiktok",
-            "pinterest",
-            "redes",
-            "social",
-            "github",
-          ],
+
+        social: {
+          keywords: ["instagram", "tiktok", "pinterest", "social", "github"],
           response:
-            "🌐 Síguenos:\n📱 Instagram: @delulufuturedev\n🎵 TikTok: @delulufuturedev\n📌 Pinterest: @delulutrend\n🐙 GitHub: delulutrendestudio",
+            "🌐 Follow me:\n📱 Instagram: @delulufuturedev\n🎵 TikTok: @delulufuturedev\n📌 Pinterest: @delulutrend\n🐙 GitHub: digitalproductmx",
         },
-        cita: {
-          keywords: [
-            "cita",
-            "agendar",
-            "reunión",
-            "zoom",
-            "consulta",
-            "proyecto",
-          ],
+
+        meeting: {
+          keywords: ["meeting", "book", "consultation", "zoom", "project"],
           response:
-            "📅 ¡Perfecto! Para agendar una cita por Zoom:\n1. Escríbenos por WhatsApp (+56 5 9998 7003)\n2. O envía un email a: indigolilobarcena@delulufuture.dev\n\nCuéntanos tu proyecto y coordinamos.",
+            "📅 Great! To schedule a Zoom session:\n1. Send me a message via WhatsApp (+56 5 610677516)\n2. Or email me at: montaglunes6@gmail.com\n\nTell me a bit about your project and we can coordinate.",
         },
-        presupuesto: {
-          keywords: ["presupuesto", "precio", "costo", "valor", "pago"],
+
+        pricing: {
+          keywords: ["pricing", "price", "cost", "budget", "payment"],
           response:
-            "💰 Los presupuestos se personalizan según tu proyecto. Lo mejor es que agendemos una llamada para conocer tus necesidades.\n\n¿Quieres que te contactemos?",
+            "💰 Pricing depends on the scope and needs of each project. The best way to start is with a short call to understand your goals.\n\nWould you like to get in touch?",
         },
-        saludo: {
-          keywords: ["hola", "buenos", "hey", "ey", "qué tal", "cómo estás"],
+
+        greeting: {
+          keywords: ["hello", "hi", "hey"],
           response:
-            "¡Hola! 👋 Bienvenido a Delulo Minimal. ¿En qué puedo ayudarte?",
+            "Hello! 👋 Welcome to my portfolio. How can I help you today?",
         },
       };
-
       const defaultConfig = {
         background_color: "#ffffff",
         text_color: "#0a0a0a",
@@ -1029,7 +1014,7 @@
           }
         }
 
-        return "🤔 Interesante pregunta. Te recomiendo que contactes directamente:\n📧 indigolilobarcena@delulufuture.dev\n💬 WhatsApp: +56 5 9998 7003";
+        return "🤔 Interesting question. I recommend you contact me directly.:\n📧 montaglunes6@gmail.com\n💬 WhatsApp: +56 5 610677516";
       }
 
       function sendMessage() {
