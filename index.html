@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delulu Minimal</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Special+Elite&amp;family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #0a0a0a;
+        --accent-color: #1a1a1a;
+        --surface-color: #ffffff;
+        --muted-color: #6b6b6b;
+      }
+
+      * {
+        font-family: "Courier Prime", "Courier New", monospace;
+      }
+
+      .font-typewriter {
+        font-family: "Special Elite", "Courier Prime", monospace;
+      }
+
+      .hover-underline {
+        position: relative;
+      }
+
+      .hover-underline::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: currentColor;
+        transition: width 0.3s ease;
+      }
+
+      .hover-underline:hover::after {
+        width: 100%;
+      }
+
+      .case-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .case-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 8px 8px 0 var(--text-color);
+      }
+
+      .principle-item {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .principle-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .principle-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .principle-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .principle-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .principle-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .cursor-blink::after {
+        content: "|";
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .noise-bg {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.02;
+      }
+
+      .tag {
+        border: 1px solid currentColor;
+        padding: 2px 8px;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .project-card {
+        padding: 32px;
+        border: 2px solid #000;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: block;
+        color: #000;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-card h3 {
+        font-family: "Special Elite", "Courier Prime", monospace;
+        font-size: 24px;
+        margin-bottom: 12px;
+        color: #000;
+      }
+
+      .project-card p {
+        font-size: 14px;
+        color: #000;
+        line-height: 1.6;
+      }
+    </style>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+  <body
+    class="h-full overflow-auto"
+    style="background-color: var(--bg-color); color: var(--text-color)"
+  >
+    <div class="w-full h-full relative">
+      <div class="noise-bg fixed inset-0 pointer-events-none"></div>
+      <!-- Navigation -->
+      <nav
+        class="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12"
+        style="background-color: var(--bg-color)"
+      >
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+          <a href="#" class="flex items-center gap-2">
+            <img
+              src="https://raw.githubusercontent.com/frontenddeveloper2025dev/minimal2delulu/refs/heads/main/1.png"
+              alt="Delulu Minimal Logo"
+              class="h-8 w-auto"
+              loading="lazy"
+              onerror="console.error('Logo failed to load:', this.src); this.style.display='none';"
+            />
+            <span
+              class="font-typewriter text-lg tracking-wider hidden sm:inline"
+              >DELULU</span
+            >
+          </a>
+          <div class="hidden md:flex gap-8 text-xs tracking-widest uppercase">
+            <a href="#about" class="hover-underline">About</a>
+            <a href="#principles" class="hover-underline">Principles</a>
+            <a href="#services" class="hover-underline">Services</a>
+            <a href="#cases" class="hover-underline">Cases</a>
+            <a href="#contact" class="hover-underline">Contact</a>
+          </div>
+          <button class="md:hidden" onclick="toggleMenu()">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="fixed inset-0 z-40 hidden"
+        style="background-color: var(--bg-color)"
+      >
+        <div
+          class="flex flex-col items-center justify-center h-full gap-8 text-lg tracking-widest uppercase"
+        >
+          <a href="#about" onclick="toggleMenu()" class="hover-underline">
+            About
+          </a>
+
+          <a href="#principles" onclick="toggleMenu()" class="hover-underline">
+            Design Principles
+          </a>
+
+          <a href="#projects" onclick="toggleMenu()" class="hover-underline">
+            Projects
+          </a>
+
+          <a href="#cases" onclick="toggleMenu()" class="hover-underline">
+            Case Studies
+          </a>
+
+          <a href="#contact" onclick="toggleMenu()" class="hover-underline">
+            Contact
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <header
+        class="min-h-screen flex items-center justify-center px-6 md:px-12 pt-20"
+      >
+        <div class="max-w-4xl mx-auto text-center">
+          <img
+            src="https://raw.githubusercontent.com/frontenddeveloper2025dev/minimal2delulu/refs/heads/main/1.png"
+            alt="Delulu Minimal Logo"
+            class="h-32 w-auto mx-auto mb-12"
+            loading="lazy"
+            onerror="console.error('Logo failed to load:', this.src); this.style.display='none';"
+          />
+          <p
+            class="text-xs tracking-[0.3em] uppercase mb-8"
+            style="color: var(--muted-color)"
+            id="hero-subtitle"
+          >
+            Digital Product Design & Frontend Development
+          </p>
+          <h1
+            class="font-typewriter text-5xl md:text-7xl lg:text-8xl mb-8 leading-tight"
+            id="hero-title"
+          >
+            Delulu<br />
+            Future Dev
+          </h1>
+          <p
+            class="text-xl md:text-2xl font-light tracking-wide cursor-blink"
+            id="hero-tagline"
+          >
+            Less noise. More intention.
+          </p>
+          <div class="mt-16">
+            <a
+              href="#about"
+              class="inline-block border border-current px-8 py-3 text-xs tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-300"
+              >Explore</a
+            >
+          </div>
+          <div class="mt-20 animate-bounce">
+            <svg
+              class="w-6 h-6 mx-auto"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+              style="color: var(--muted-color)"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </div>
+        </div>
+      </header>
+      <!-- About Section -->
+      <section id="about" class="py-32 px-6 md:px-12">
+        <div class="max-w-4xl mx-auto">
+          <p
+            class="text-xs tracking-[0.3em] uppercase mb-4"
+            style="color: var(--muted-color)"
+          >
+            ¿Quiénes somos?
+          </p>
+          <h2 class="font-typewriter text-3xl md:text-4xl mb-12">
+            Diseño digital que respira
+          </h2>
+          <div
+            class="grid md:grid-cols-2 gap-12 text-sm leading-relaxed"
+            style="color: var(--muted-color)"
+          >
+            <p>
+              <strong style="color: var(--text-color)"
+                >Delulu Future Dev</strong
+              >
+              es nuestra línea estratégica enfocada en diseño web y producto
+              digital donde la estética potencia la funcionalidad.
+            </p>
+            <p>
+              Creamos interfaces limpias, jerárquicas y accesibles. Cada
+              decisión visual tiene propósito. Cada interacción comunica.
+            </p>
+          </div>
+          <p class="mt-12 text-lg border-l-2 border-current pl-6 italic">
+            No diseñamos para impresionar. Diseñamos para que funcione, que se
+            entienda y que inspire confianza.
+          </p>
+        </div>
+      </section>
+      <!-- Principles Section -->
+      <section
+        id="principles"
+        class="py-32 px-6 md:px-12"
+        style="background-color: var(--text-color); color: var(--bg-color)"
+      >
+        <div class="max-w-5xl mx-auto">
+          <p class="text-xs tracking-[0.3em] uppercase mb-4 opacity-60">
+            Principios
+          </p>
+          <h2 class="font-typewriter text-3xl md:text-4xl mb-16">
+            Cómo trabajamos
+          </h2>
+          <div class="grid gap-12">
+            <div
+              class="principle-item grid md:grid-cols-12 gap-6 items-start border-b border-current border-opacity-20 pb-12"
+            >
+              <span class="font-typewriter text-4xl opacity-30 md:col-span-2"
+                >01</span
+              >
+              <div class="md:col-span-10">
+                <h3 class="text-lg mb-3">Claridad antes que ruido</h3>
+                <p class="text-sm opacity-60 leading-relaxed">
+                  La información debe entenderse sin esfuerzo. Jerarquía clara,
+                  tipografía legible, espacios generosos.
+                </p>
+              </div>
+            </div>
+            <div
+              class="principle-item grid md:grid-cols-12 gap-6 items-start border-b border-current border-opacity-20 pb-12"
+            >
+              <span class="font-typewriter text-4xl opacity-30 md:col-span-2"
+                >02</span
+              >
+              <div class="md:col-span-10">
+                <h3 class="text-lg mb-3">Accesibilidad real</h3>
+                <p class="text-sm opacity-60 leading-relaxed">
+                  Contraste suficiente, navegación intuitiva, estructura
+                  coherente. Diseñamos para todas las personas.
+                </p>
+              </div>
+            </div>
+            <div
+              class="principle-item grid md:grid-cols-12 gap-6 items-start border-b border-current border-opacity-20 pb-12"
+            >
+              <span class="font-typewriter text-4xl opacity-30 md:col-span-2"
+                >03</span
+              >
+              <div class="md:col-span-10">
+                <h3 class="text-lg mb-3">Estrategia visual</h3>
+                <p class="text-sm opacity-60 leading-relaxed">
+                  Cada color, espacio y tipografía tiene propósito. Nada es
+                  decorativo si no comunica.
+                </p>
+              </div>
+            </div>
+            <div
+              class="principle-item grid md:grid-cols-12 gap-6 items-start border-b border-current border-opacity-20 pb-12"
+            >
+              <span class="font-typewriter text-4xl opacity-30 md:col-span-2"
+                >04</span
+              >
+              <div class="md:col-span-10">
+                <h3 class="text-lg mb-3">Confianza estructural</h3>
+                <p class="text-sm opacity-60 leading-relaxed">
+                  Interfaces limpias generan seguridad. Usuarios saben dónde
+                  están y qué hacer.
+                </p>
+              </div>
+            </div>
+            <div
+              class="principle-item grid md:grid-cols-12 gap-6 items-start pb-12"
+            >
+              <span class="font-typewriter text-4xl opacity-30 md:col-span-2"
+                >05</span
+              >
+              <div class="md:col-span-10">
+                <h3 class="text-lg mb-3">Multidisciplina aplicada</h3>
+                <p class="text-sm opacity-60 leading-relaxed">
+                  Branding, UX, producto y dirección visual trabajando juntos.
+                  Coherencia en todo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Services Section -->
+      <section id="services" class="py-32 px-6 md:px-12">
+        <div class="max-w-5xl mx-auto">
+          <p
+            class="text-xs tracking-[0.3em] uppercase mb-4"
+            style="color: var(--muted-color)"
+          >
+            Servicios
+          </p>
+          <h2 class="font-typewriter text-3xl md:text-4xl mb-16">
+            Lo que hacemos
+          </h2>
+          <div class="grid md:grid-cols-2 gap-12">
+            <div class="group">
+              <div class="flex items-start gap-4 mb-4">
+                <svg
+                  class="w-8 h-8 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                <h3 class="text-lg group-hover:underline">
+                  Diseño Web Estratégico
+                </h3>
+              </div>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: var(--muted-color)"
+              >
+                Landing pages, sitios corporativos y portafolios con enfoque en
+                claridad, jerarquía y conversión. Diseño que no solo se ve bien,
+                sino que funciona.
+              </p>
+            </div>
+            <div class="group">
+              <div class="flex items-start gap-4 mb-4">
+                <svg
+                  class="w-8 h-8 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  />
+                </svg>
+                <h3 class="text-lg group-hover:underline">Producto Digital</h3>
+              </div>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: var(--muted-color)"
+              >
+                Interfaces para apps, dashboards, plataformas. UX centrado en
+                usuario, accesibilidad y usabilidad en todo.
+              </p>
+            </div>
+            <div class="group">
+              <div class="flex items-start gap-4 mb-4">
+                <svg
+                  class="w-8 h-8 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                  />
+                </svg>
+                <h3 class="text-lg group-hover:underline">
+                  Identidad Visual Minimalista
+                </h3>
+              </div>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: var(--muted-color)"
+              >
+                Sistemas visuales limpios, funcionales y escalables. Branding
+                que comunica sin saturar.
+              </p>
+            </div>
+            <div class="group">
+              <div class="flex items-start gap-4 mb-4">
+                <svg
+                  class="w-8 h-8 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewbox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                  />
+                </svg>
+                <h3 class="text-lg group-hover:underline">
+                  Auditoría UX &amp; Accesibilidad
+                </h3>
+              </div>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: var(--muted-color)"
+              >
+                Revisión profunda de jerarquía, contraste, navegación y
+                estructura. Identificamos problemas, sugerimos soluciones.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Cases Section -->
+      <section
+        id="cases"
+        class="py-32 px-6 md:px-12"
+        style="background-color: #f0f0f0"
+      >
+        <div class="max-w-5xl mx-auto">
+          <p
+            class="text-xs tracking-[0.3em] uppercase mb-4"
+            style="color: var(--muted-color)"
+          >
+            Casos de Estudio
+          </p>
+          <h2 class="font-typewriter text-3xl md:text-4xl mb-16">
+            Proyectos destacados
+          </h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Inner Rhythm -->
+            <a
+              href="https://inner-rhythm.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card"
+              style="background-color: #fcf300"
+            >
+              <h3>Inner Rhythm</h3>
+              <p>
+                Plataforma de meditación y bienestar emocional. UX minimalista,
+                datos visuales claros, interfaz que calma.
+              </p></a
+            >
+            <!-- BAAR -->
+            <a
+              href="https://baarinstalacionesaplicadas.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card"
+              style="background-color: #3043f2; color: #fff"
+            >
+              <h3>BAAR</h3>
+              <p>
+                Sitio corporativo con jerarquía clara y navegación intuitiva.
+                Diseño profesional, estructura estratégica.
+              </p></a
+            >
+            <!-- VéloParis -->
+            <a
+              href="https://famous-seahorse-c810ce.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card"
+              style="background-color: #ff0642; color: #fff"
+            >
+              <h3>VéloParis</h3>
+              <p>
+                Plataforma de movilidad urbana. Producto digital limpio,
+                elegante y centrado en experiencia.
+              </p></a
+            >
+            <!-- Evaluación TDA/TDAH -->
+            <a
+              href="https://controlpsiquiatra.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-card"
+              style="background-color: #3ba715; color: #fff"
+            >
+              <h3>Evaluación TDA/TDAH</h3>
+              <p>
+                Interfaz funcional para diagnóstico clínico. Claridad,
+                estructura y usabilidad sin compromisos.
+              </p></a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="py-32 px-6 md:px-12"
+        style="background-color: var(--text-color); color: var(--bg-color)"
+      >
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-20">
+            <p class="text-xs tracking-[0.3em] uppercase mb-4 opacity-60">
+              Comencemos
+            </p>
+            <h2 class="font-typewriter text-3xl md:text-5xl mb-8">
+              ¿Listo para diseño que funciona?
+            </h2>
+            <p class="text-lg mb-12 opacity-80">
+              Somos 100% online. Agendemos una cita zoom para tu proyecto.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-16 mb-16">
+            <!-- Email -->
+            <div class="border-l-2 border-current border-opacity-30 pl-6">
+              <p class="text-xs tracking-[0.3em] uppercase opacity-60 mb-3">
+                Email
+              </p>
+              <a
+                href="mailto:indigolilobarcena@delulufuture.dev"
+                class="text-lg md:text-xl hover-underline break-all"
+                >indigolilobarcena@delulufuture.dev</a
+              >
+            </div>
+            <!-- WhatsApp -->
+            <div class="border-l-2 border-current border-opacity-30 pl-6">
+              <p class="text-xs tracking-[0.3em] uppercase opacity-60 mb-3">
+                WhatsApp
+              </p>
+              <a
+                href="https://wa.me/5655998700"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-lg md:text-xl hover-underline"
+                >+56 5 9998 7003</a
+              >
+            </div>
+          </div>
+          <!-- Social Links -->
+          <div class="border-t border-current border-opacity-20 pt-12">
+            <p class="text-xs tracking-[0.3em] uppercase opacity-60 mb-8">
+              Conecta con nosotros
+            </p>
+            <div class="flex flex-wrap gap-6">
+              <a
+                href="https://www.instagram.com/delulufuturedev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm tracking-wider uppercase hover-underline opacity-80 hover:opacity-100 transition"
+                >Instagram</a
+              >
+              <a
+                href="https://mx.pinterest.com/delulutrend/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm tracking-wider uppercase hover-underline opacity-80 hover:opacity-100 transition"
+                >Pinterest</a
+              >
+              <a
+                href="https://www.tiktok.com/@delulufuturedev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm tracking-wider uppercase hover-underline opacity-80 hover:opacity-100 transition"
+                >TikTok</a
+              >
+              <a
+                href="https://github.com/delulutrendestudio"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm tracking-wider uppercase hover-underline opacity-80 hover:opacity-100 transition"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer
+        class="py-12 px-6 md:px-12 border-t"
+        style="border-color: #e0e0e0"
+      >
+        <div
+          class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6"
+        >
+          <p class="font-typewriter text-sm">DELULU FUTURE DEV © 2025</p>
+          <p class="text-xs opacity-60">100% online • Citas por Zoom</p>
+        </div>
+      </footer>
+      <!-- Chat Bot Widget -->
+      <div
+        id="chat-widget"
+        class="fixed bottom-6 right-6 z-50 flex flex-col gap-3"
+      >
+        <!-- Chat Window -->
+        <div
+          id="chat-window"
+          class="hidden w-96 max-w-sm bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col"
+          style="height: 500px"
+        >
+          <!-- Chat Header -->
+          <div
+            class="p-4 border-b border-gray-200 flex justify-between items-center"
+            style="background-color: var(--text-color); color: var(--bg-color)"
+          >
+            <div>
+              <h3 class="font-typewriter text-sm font-semibold">
+                Delulu Assistant
+              </h3>
+              <p class="text-xs opacity-70">Responde en tiempo real</p>
+            </div>
+            <button onclick="toggleChat()" class="hover:opacity-70 transition">
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewbox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <!-- Messages Container -->
+          <div
+            id="messages-container"
+            class="flex-1 overflow-y-auto p-4 space-y-4"
+          >
+            <div class="flex gap-3">
+              <div
+                class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center font-typewriter text-sm"
+                style="
+                  background-color: var(--text-color);
+                  color: var(--bg-color);
+                "
+              >
+                D
+              </div>
+              <div class="flex-1 bg-gray-100 rounded-lg p-3 text-sm">
+                <p>¡Hola! 👋 Bienvenido a Delulu Minimal.</p>
+                <p class="text-xs opacity-60 mt-2">
+                  ¿En qué puedo ayudarte hoy?
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Input Area -->
+          <div class="p-4 border-t border-gray-200">
+            <div class="flex gap-2">
+              <input
+                id="chat-input"
+                type="text"
+                placeholder="Escribe tu pregunta..."
+                class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-current"
+                onkeypress="handleChatKeypress(event)"
+              />
+              <button
+                onclick="sendMessage()"
+                class="px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300"
+                style="
+                  background-color: var(--text-color);
+                  color: var(--bg-color);
+                "
+              >
+                Enviar
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Chat Toggle Button -->
+        <button
+          id="chat-toggle"
+          onclick="toggleChat()"
+          class="w-16 h-16 rounded-full shadow-lg flex items-center justify-center font-typewriter font-semibold text-lg transition-all duration-300 hover:scale-110"
+          style="background-color: var(--text-color); color: var(--bg-color)"
+        >
+          💬
+        </button>
+      </div>
+    </div>
+    <script>
+      const botResponses = {
+        horario: {
+          keywords: ["horario", "abierto", "atención", "disponible", "horas"],
+          response:
+            "⏰ Estamos online 24/7 para consultas. Las citas se agendas por Zoom en horarios coordinados contigo. ¿Quieres agendar una?",
+        },
+        contacto: {
+          keywords: ["email", "correo", "teléfono", "whatsapp", "contacto"],
+          response:
+            "📧 Contactanos:\n📨 indigolilobarcena@delulufuture.dev\n💬 WhatsApp: +56 5 9998 7003\n\n¿Necesitas algo específico?",
+        },
+        servicios: {
+          keywords: [
+            "servicio",
+            "qué hacen",
+            "qué ofrece",
+            "diseño",
+            "producto",
+          ],
+          response:
+            "🎨 Ofrecemos:\n• Diseño Web Estratégico\n• Producto Digital\n• Identidad Visual Minimalista\n• Auditoría UX & Accesibilidad\n\n¿Cuál te interesa?",
+        },
+        redes: {
+          keywords: [
+            "instagram",
+            "tiktok",
+            "pinterest",
+            "redes",
+            "social",
+            "github",
+          ],
+          response:
+            "🌐 Síguenos:\n📱 Instagram: @delulufuturedev\n🎵 TikTok: @delulufuturedev\n📌 Pinterest: @delulutrend\n🐙 GitHub: delulutrendestudio",
+        },
+        cita: {
+          keywords: [
+            "cita",
+            "agendar",
+            "reunión",
+            "zoom",
+            "consulta",
+            "proyecto",
+          ],
+          response:
+            "📅 ¡Perfecto! Para agendar una cita por Zoom:\n1. Escríbenos por WhatsApp (+56 5 9998 7003)\n2. O envía un email a: indigolilobarcena@delulufuture.dev\n\nCuéntanos tu proyecto y coordinamos.",
+        },
+        presupuesto: {
+          keywords: ["presupuesto", "precio", "costo", "valor", "pago"],
+          response:
+            "💰 Los presupuestos se personalizan según tu proyecto. Lo mejor es que agendemos una llamada para conocer tus necesidades.\n\n¿Quieres que te contactemos?",
+        },
+        saludo: {
+          keywords: ["hola", "buenos", "hey", "ey", "qué tal", "cómo estás"],
+          response:
+            "¡Hola! 👋 Bienvenido a Delulo Minimal. ¿En qué puedo ayudarte?",
+        },
+      };
+
+      const defaultConfig = {
+        background_color: "#ffffff",
+        text_color: "#0a0a0a",
+        surface_color: "#ffffff",
+        accent_color: "#1a1a1a",
+        muted_color: "#6b6b6b",
+        font_family: "Special Elite",
+        font_size: 16,
+        hero_title: "Delulu\nMinimal",
+        hero_subtitle: "Diseño Digital Estratégico y Accesible",
+        hero_tagline: "Menos ruido. Más intención.",
+        cta_text: "Hablemos",
+      };
+
+      function toggleMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+      }
+
+      async function onConfigChange(config) {
+        const root = document.documentElement;
+
+        root.style.setProperty(
+          "--bg-color",
+          config.background_color || defaultConfig.background_color
+        );
+        root.style.setProperty(
+          "--text-color",
+          config.text_color || defaultConfig.text_color
+        );
+        root.style.setProperty(
+          "--surface-color",
+          config.surface_color || defaultConfig.surface_color
+        );
+        root.style.setProperty(
+          "--accent-color",
+          config.accent_color || defaultConfig.accent_color
+        );
+        root.style.setProperty(
+          "--muted-color",
+          config.muted_color || defaultConfig.muted_color
+        );
+
+        const customFont = config.font_family || defaultConfig.font_family;
+        const baseFontStack = "'Courier Prime', 'Courier New', monospace";
+        document.querySelectorAll(".font-typewriter").forEach((el) => {
+          el.style.fontFamily = `'${customFont}', ${baseFontStack}`;
+        });
+
+        const baseSize = config.font_size || defaultConfig.font_size;
+        document.body.style.fontSize = `${baseSize}px`;
+
+        const heroTitle = document.getElementById("hero-title");
+        if (heroTitle) {
+          const titleText = config.hero_title || defaultConfig.hero_title;
+          heroTitle.innerHTML = titleText.replace("\n", "<br>");
+        }
+
+        const heroSubtitle = document.getElementById("hero-subtitle");
+        if (heroSubtitle) {
+          heroSubtitle.textContent =
+            config.hero_subtitle || defaultConfig.hero_subtitle;
+        }
+
+        const heroTagline = document.getElementById("hero-tagline");
+        if (heroTagline) {
+          heroTagline.textContent =
+            config.hero_tagline || defaultConfig.hero_tagline;
+        }
+      }
+
+      function mapToCapabilities(config) {
+        return {
+          recolorables: [
+            {
+              get: () =>
+                config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              },
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              },
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              },
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              },
+            },
+            {
+              get: () => config.muted_color || defaultConfig.muted_color,
+              set: (value) => {
+                config.muted_color = value;
+                window.elementSdk.setConfig({ muted_color: value });
+              },
+            },
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            },
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            },
+          },
+        };
+      }
+
+      function mapToEditPanelValues(config) {
+        return new Map([
+          [
+            "hero_title",
+            (config.hero_title || defaultConfig.hero_title).replace(
+              "<br>",
+              "\n"
+            ),
+          ],
+          [
+            "hero_subtitle",
+            config.hero_subtitle || defaultConfig.hero_subtitle,
+          ],
+          ["hero_tagline", config.hero_tagline || defaultConfig.hero_tagline],
+          ["cta_text", config.cta_text || defaultConfig.cta_text],
+        ]);
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues,
+        });
+      } else {
+        onConfigChange(defaultConfig);
+      }
+
+      // Chat Bot Functions
+      function toggleChat() {
+        const chatWindow = document.getElementById("chat-window");
+        const chatToggle = document.getElementById("chat-toggle");
+        chatWindow.classList.toggle("hidden");
+        chatToggle.classList.toggle("hidden");
+      }
+
+      function getBotResponse(userMessage) {
+        const messageLower = userMessage.toLowerCase();
+
+        for (const [key, data] of Object.entries(botResponses)) {
+          for (const keyword of data.keywords) {
+            if (messageLower.includes(keyword)) {
+              return data.response;
+            }
+          }
+        }
+
+        return "🤔 Interesante pregunta. Te recomiendo que contactes directamente:\n📧 indigolilobarcena@delulufuture.dev\n💬 WhatsApp: +56 5 9998 7003";
+      }
+
+      function sendMessage() {
+        const input = document.getElementById("chat-input");
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        const messagesContainer = document.getElementById("messages-container");
+
+        // Add user message
+        const userMessageDiv = document.createElement("div");
+        userMessageDiv.className = "flex justify-end gap-3";
+        userMessageDiv.innerHTML = `
+        <div class="flex-1 bg-blue-500 text-white rounded-lg p-3 text-sm">
+          <p>${message}</p>
+        </div>
+        <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center font-typewriter text-sm" style="background-color: var(--text-color); color: var(--bg-color);">👤</div>
+      `;
+        messagesContainer.appendChild(userMessageDiv);
+
+        // Clear input
+        input.value = "";
+
+        // Simulate bot typing delay
+        setTimeout(() => {
+          const botResponse = getBotResponse(message);
+          const botMessageDiv = document.createElement("div");
+          botMessageDiv.className = "flex gap-3";
+          botMessageDiv.innerHTML = `
+          <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center font-typewriter text-sm" style="background-color: var(--text-color); color: var(--bg-color);">D</div>
+          <div class="flex-1 bg-gray-100 rounded-lg p-3 text-sm whitespace-pre-wrap">
+            <p>${botResponse}</p>
+          </div>
+        `;
+          messagesContainer.appendChild(botMessageDiv);
+
+          // Scroll to bottom
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }, 400);
+
+        // Scroll to bottom
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+
+      function handleChatKeypress(event) {
+        if (event.key === "Enter") {
+          sendMessage();
+        }
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href !== "#") {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        });
+      });
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9d1d7e2127f2d346',t:'MTc3MTc1MjkxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
