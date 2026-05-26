@@ -15,10 +15,17 @@
     <style>
       :root {
         --bg-color: #ffffff;
-        --text-color: #0a0a0a;
-        --accent-color: #1a1a1a;
+
+        /* texto principal más fuerte */
+        --text-color: #111111;
+
+        /* negro editorial elegante */
+        --accent-color: #000000;
+
         --surface-color: #ffffff;
-        --muted-color: #6b6b6b;
+
+        /* gris más visible y accesible */
+        --muted-color: #3f3f3f;
       }
 
       * {
@@ -73,15 +80,19 @@
       .principle-item:nth-child(1) {
         animation-delay: 0.1s;
       }
+
       .principle-item:nth-child(2) {
         animation-delay: 0.2s;
       }
+
       .principle-item:nth-child(3) {
         animation-delay: 0.3s;
       }
+
       .principle-item:nth-child(4) {
         animation-delay: 0.4s;
       }
+
       .principle-item:nth-child(5) {
         animation-delay: 0.5s;
       }
@@ -104,10 +115,11 @@
 
       .tag {
         border: 1px solid currentColor;
-        padding: 2px 8px;
-        font-size: 10px;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.08em;
       }
 
       .project-card {
@@ -127,20 +139,33 @@
 
       .project-card h3 {
         font-family: "Special Elite", "Courier Prime", monospace;
-        font-size: 24px;
-        margin-bottom: 12px;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 14px;
         color: #000;
+        line-height: 1.3;
       }
 
       .project-card p {
-        font-size: 14px;
-        color: #000;
-        line-height: 1.6;
+        font-size: 16px;
+        color: #1f1f1f;
+        line-height: 1.8;
+        font-weight: 500;
       }
-    </style>
-    <style>
+
       body {
         box-sizing: border-box;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      ::selection {
+        background: #111111;
+        color: #ffffff;
       }
     </style>
     <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -233,50 +258,71 @@
         </div>
       </div>
 
-      <!-- Hero Section -->
-      <header
-        class="min-h-screen flex items-center justify-center px-6 md:px-12 pt-20"
-      >
-        <div class="max-w-4xl mx-auto text-center">
-          <img
-            src="https://raw.githubusercontent.com/digitalproductmx/deluluminimalPD/refs/heads/main/LOGO%20DIGITAL%20%20PRODUCT.png"
-            alt="Digital Product Logo"
-            class="h-24 md:h-28 w-auto mx-auto mb-10"
-            loading="lazy"
-            onerror="console.error('Logo failed to load:', this.src); this.style.display='none';"
-          />
+    <!-- Hero Section -->
+<header
+class="min-h-screen flex items-center justify-center px-6 md:px-12 pt-20"
+>
+<div class="max-w-4xl mx-auto text-center">
+  
+  <img
+    src="https://raw.githubusercontent.com/digitalproductmx/deluluminimalPD/refs/heads/main/LOGO%20DIGITAL%20%20PRODUCT.png"
+    alt="Digital Product Logo"
+    class="h-40 md:h-52 lg:h-56 w-auto mx-auto mb-12"
+    loading="lazy"
+    onerror="console.error('Logo failed to load:', this.src); this.style.display='none';"
+  />
 
-          <p
-            class="text-sm tracking-[0.12em] uppercase mb-6"
-            style="color: var(--muted-color)"
-            id="hero-subtitle"
-          >
-            Digital Product Design & Frontend Development
-          </p>
+  <p
+    class="text-base md:text-lg font-semibold tracking-[0.08em] uppercase mb-6"
+    style="color: var(--muted-color)"
+    id="hero-subtitle"
+  >
+    Digital Product Design & Frontend Development
+  </p>
 
-          <h1
-            class="font-typewriter text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight"
-            id="hero-title"
-          >
-            Alejandra<br />
-            Bárcena
-          </h1>
+  <h1
+    class="font-typewriter text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight"
+    id="hero-title"
+  >
+    Alejandra<br />
+    Bárcena
+  </h1>
 
-          <p
-            class="text-lg md:text-2xl font-light tracking-wide cursor-blink"
-            id="hero-tagline"
-          >
-            Less noise. More intention.
-          </p>
+  <p
+    class="text-lg md:text-2xl font-medium tracking-wide cursor-blink"
+    id="hero-tagline"
+  >
+    Less noise. More intention.
+  </p>
 
-          <div class="mt-12">
-            <a
-              href="#about"
-              class="inline-block border border-current px-8 py-3 text-sm tracking-[0.15em] uppercase hover:bg-black hover:text-white transition-colors duration-300"
-            >
-              Explore
-            </a>
-          </div>
+  <div class="mt-12">
+    <a
+      href="#about"
+      class="inline-block border border-current px-8 py-3 text-sm font-semibold tracking-[0.12em] uppercase hover:bg-black hover:text-white transition-colors duration-300"
+    >
+      Explore
+    </a>
+  </div>
+
+  <div class="mt-16 animate-bounce">
+    <svg
+      class="w-6 h-6 mx-auto"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      style="color: var(--muted-color)"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+      />
+    </svg>
+  </div>
+
+</div>
+</header>
 
           <div class="mt-16 animate-bounce">
             <svg
